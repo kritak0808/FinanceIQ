@@ -1,0 +1,9 @@
+from app.routers.auth import router as auth_router
+from app.routers.transactions import router as transactions_router
+from app.routers.budgets import router as budgets_router
+from app.routers.forecasts import router as forecasts_router
+from app.routers.coach import router as coach_router
+from app.routers.goals import router as goals_router
+from app.routers.investments import router as investments_router
+from app.routers.admin import router as admin_router
+from app.routers.ocr import router as ocr_router

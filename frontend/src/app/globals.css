@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050811;
+  --foreground: #f8fafc;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-display: var(--font-display), system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Premium UI Utility Classes */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(15, 23, 42, 0.65);
+  border-color: rgba(99, 102, 241, 0.2); /* violet border glow */
+  box-shadow: 0 0 25px rgba(99, 102, 241, 0.08);
+}
+
+.text-glow-violet {
+  text-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+.text-glow-emerald {
+  text-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.45);
+}
+
+/* Grid overlay background */
+.grid-bg {
+  background-image: radial-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Gradient borders */
+.gradient-border-emerald {
+  border: 1px solid transparent;
+  background-image: linear-gradient(rgba(5, 8, 17, 1), rgba(5, 8, 17, 1)), linear-gradient(to right, #10b981, #059669);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.gradient-border-violet {
+  border: 1px solid transparent;
+  background-image: linear-gradient(rgba(5, 8, 17, 1), rgba(5, 8, 17, 1)), linear-gradient(to right, #8b5cf6, #ec4899);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}

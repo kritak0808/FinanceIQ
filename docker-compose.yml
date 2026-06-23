@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=production
+      - DATABASE_URL=postgresql://finsense:finsensepass@db:5432/finsense_db
+      - JWT_SECRET=productionsecretkeypleasechangeinprod987654321
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - backend-data:/app/data
+      - backend-receipts:/app/static/receipts
+    depends_on:
+      - redis
+      - db
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    depends_on:
+      - backend
+    restart: always
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: always
+
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=finsense
+      - POSTGRES_PASSWORD=finsensepass
+      - POSTGRES_DB=finsense_db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  backend-data:
+  backend-receipts:
+  postgres-data:
